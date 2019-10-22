@@ -1,0 +1,18 @@
+#Eclipse settings file
+.settings/
+
+#maven
+.mvn
+mvnw
+mvnw.cmd
+
+#build
+target/
+
+#Other
+.classpath
+.project
+HELP.md
+
+#application.properties with sensitive information
+src/main/resources/application-dev.properties

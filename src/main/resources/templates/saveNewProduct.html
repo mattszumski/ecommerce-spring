@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert Data for new Product</title>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" media="screen" />
+</head>
+<body>
+<nav th:insert="fragments/header :: header">
+</nav>
+<div class="container">
+	<h3>Insert Data for new Product!</h3>
+
+	<form th:action="@{/newProduct}" th:object="${productDTO}" method="post">
+   <p>Name: <input type="text" id="name" name="name" /></p>
+   <p>Price: <input type="number" id="price" name="price" step="0.01" /> </p>
+   <p>Short Description :<input type="text" id="shortDescription" name="shortDescription" /></p>
+   <p>Long Description :<input type="text" id="longDescription" name="longDescription" /></p>
+   
+	<p> Category: <select name="category">
+    	<option th:each="category : ${T(com.ms.ecommerce.eshop.data.entity.ProductCategory).values()}"
+        	th:id="${{category}}" th:value="${{category}}" th:text="${category.label}"></option>
+		</select> 
+	</p>
+
+	<p>KeyWords: <input type="text" id="keywords" name="keywords" /> </p>
+	<p>In Stock: <input type="text" id="productsInStock" name="productsInStock" /> </p>
+	<p>Shipping: <select name="shippingMethod">
+    	<option th:each="shippingMethod : ${T(com.ms.ecommerce.eshop.data.entity.ShippingMethod).values()}"
+        	th:id="${{shippingMethod}}" th:value="${{shippingMethod}}" th:text="${shippingMethod.label}"></option>
+		</select> 
+	</p>
+   <button type="submit">Add new product</button>
+</form>
+	
+</div>
+
+<div th:insert="fragments/footer :: footer"></div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+.container {
+	padding: 10px;
+}
+
+.product-display {
+	display: inline-block;
+	vertical-align: top;
+	border: 1px solid black;
+	margin: 5px;
+	padding: 5px;
+	width: 200px;
+	height: 200px;
+}
+
+.header {
+	border-bottom: 2px solid black;
+}
+.header .container {
+	display: inline-block;
+}	
+
+.header .container h1 {
+	font-size: 200%;
+}	
+
+.footer {
+	border-top: 2px solid black;
+}

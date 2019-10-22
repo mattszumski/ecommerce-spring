@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="'Product page: ' + ${product.name}">Product page</title>
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div th:insert="fragments/header :: header"></div>
+
+<!-- TODO: Make it prettier, add links (to categories for example)  -->
+
+
+<div class="container">
+	<div class="d-inline-block bg-primary text-white">
+			<p th:text="${product.name}">Product Name</p>
+			<p th:text="${product.price}">Product Price</p>
+			<p th:text="${product.longDescription}">Product Description</p>
+			<p th:text="${product.shippingMethod}">Product Description</p>
+			<p th:text="${product.category}">Product Description</p>
+	</div>
+</div>
+
+<div th:insert="fragments/footer :: footer"></div>
+</body>
+</html>
