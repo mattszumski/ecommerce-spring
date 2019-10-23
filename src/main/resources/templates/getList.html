@@ -9,14 +9,12 @@
 <div th:insert="fragments/header :: header"></div>
 
 <div class="container">
-	<div class="page-header">
 		<h1>List of Products:</h1>
-	</div>
 </div>
 <div class="container">
 	
 	<div class="product-display" th:each="product: ${data}">
-				<p th:text="${product.name}">Product Name</p>
+				<p><a th:href="@{/{name}-{id}(name=${product.name}, id=${product.productId})}" th:text="${product.name}"> Product Name</a></p>
 				<p th:text="${product.price}">Product Price</p>
 				<p th:text="${product.shortDescription}">Product Description</p>
 	</div>

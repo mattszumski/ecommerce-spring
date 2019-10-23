@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title > </title>
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div th:insert="fragments/header :: header"></div>
+
+<div class="container">
+
+<div class="panel-body">
+    <form action="doLogin" method="post">
+        <fieldset>
+            <legend>Please sign in</legend>
+            <div class="form-group">
+                <input class="form:input-large" placeholder="User Name"
+                       th:name="username" type="text">
+            </div>
+            <div class="form-group">
+                <input class=" form:input-large" placeholder="Password"
+                       th:name="password" type="password" value="">
+            </div>
+            <input class="btn" type="submit"
+                   value="Login">
+        </fieldset>
+    </form>
+</div>
+</div>
+
+<div th:insert="fragments/footer :: footer"></div>
+</body>
+</html>

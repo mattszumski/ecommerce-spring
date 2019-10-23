@@ -6,7 +6,7 @@ import com.ms.ecommerce.eshop.data.entity.ProductCategory;
 import com.ms.ecommerce.eshop.data.entity.ShippingMethod;
 
 public class ProductDTO {
-	private Long product_id;
+	private Long productId;
 	private String name;
 	private BigDecimal price;
 	private String shortDescription;
@@ -18,7 +18,7 @@ public class ProductDTO {
 	
 	public ProductDTO(Long product_id, String name, BigDecimal price, String shortDescription, String longDescription,
 			ProductCategory category, String keywords, int productsInStock, ShippingMethod shippingMethod) {
-		this.product_id = product_id;
+		this.productId = product_id;
 		this.name = name;
 		this.price = price;
 		this.shortDescription = shortDescription;
@@ -32,12 +32,12 @@ public class ProductDTO {
 	public ProductDTO () {
 	}
 
-	public Long getProduct_id() {
-		return product_id;
+	public Long getProductId() {
+		return productId;
 	}
 
-	public void setProduct_id(Long product_id) {
-		this.product_id = product_id;
+	public void setProductId(Long product_id) {
+		this.productId = product_id;
 	}
 
 	public String getName() {

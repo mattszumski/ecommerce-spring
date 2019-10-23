@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title th:text="'EShop - User: ' + ${user.username}"> </title>
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div th:insert="fragments/header :: header"></div>
+
+<div class="container">
+	
+	<div class="user-display" >
+				<p th:text="${user.username}"> Username</p>
+				<p th:text="${user.createdAt}">Creation</p>
+				<div th:each="authority : ${user.authorities}">
+					<p th:text="${authority.name.label}">User authorities (roles)</p>
+				</div>
+	</div>
+
+</div>
+
+<div th:insert="fragments/footer :: footer"></div>
+</body>
+</html>
