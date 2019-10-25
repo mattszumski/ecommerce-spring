@@ -31,6 +31,39 @@ public class ProductService {
 		return product;
 	}
 	
+	public Product updateProduct(ProductDTO productDTO) {
+		Product product = productRepository.findById(productDTO.getProductId()).get();
+		product = updateProductWithDtoData(product, productDTO);
+		return productRepository.save(product);
+	}
+	
+	private Product updateProductWithDtoData(Product product, ProductDTO productDTO) {
+		product.setId(productDTO.getProductId());
+		if(!product.getName().equals(productDTO.getName())) {
+			product.setName(productDTO.getName());
+		}
+		if(!product.getPrice().equals(productDTO.getPrice())) {
+			product.setPrice(productDTO.getPrice());
+		}
+		if(!product.getShortDescription().equals(productDTO.getShortDescription())) {
+			product.setShortDescription(productDTO.getShortDescription());
+		}
+		if(!product.getLongDescription().equals(productDTO.getLongDescription())) {
+			product.setLongDescription(productDTO.getLongDescription());
+		}
+		if(!product.getCategory().equals(productDTO.getCategory())) {
+			product.setCategory(productDTO.getCategory());
+		}
+		if(!product.getProductDetails().getProductsInStock().equals(productDTO.getProductsInStock())) {
+			product.getProductDetails().setProductsInStock(productDTO.getProductsInStock());
+		}
+		if(!product.getProductDetails().getShippingMethod().equals(productDTO.getShippingMethod())) {
+			product.getProductDetails().setShippingMethod(productDTO.getShippingMethod());
+		}
+		
+		return product;
+	}
+
 	public List<ProductDTO> getAllProducts() {
 		Iterable<Product> allProducts = productRepository.findAll();
 		List<ProductDTO> productDTOs = new ArrayList<>();

@@ -3,7 +3,8 @@ package com.ms.ecommerce.eshop.security.entity;
 public enum  AuthorityType {
 
     ROLE_ADMIN("Admin"),
-    ROLE_USER("User");
+    ROLE_USER("User"),
+	ROLE_CLIENT("Client");
     
     
     private String label;

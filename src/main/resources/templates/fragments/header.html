@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <link rel="stylesheet" href="css/style.css"/>
 </head>
@@ -26,6 +26,18 @@
 			<input type="text" th:name="keyword" th:placeholder="Keyword"/>
 			<button type="submit">Search</button>
 		</form>
+	</div>
+	<div class="container" sec:authorize="!isAuthenticated()">
+		<h3><a th:href="@{/login}">Log in</a></h3>
+	</div>
+	<div class="container" sec:authorize="isAuthenticated()">
+		<h3>You are logged in.</h3><h3 th:text="'Your id is: ' + ${session.userId}"></h3>
+	</div>
+	<div class="container" sec:authorize="hasAnyRole('ADMIN', 'USER')">
+		<h3><a th:href="@{/newProduct}">Add new Product</a></h3>
+	</div>
+	<div class="container" sec:authorize="isAuthenticated()">
+		<h3><a th:href="@{/logout}" >Logout</a></h3>
 	</div>
 
 </nav>

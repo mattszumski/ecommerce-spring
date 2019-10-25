@@ -19,7 +19,7 @@ public class ProductDetails {
 	private long id;
 	
 	@Column(name="products_in_stock")
-	private int productsInStock;
+	private Integer productsInStock;
 	
 	@Column(name="shipping_method")
 	@Enumerated(EnumType.STRING)
@@ -32,7 +32,7 @@ public class ProductDetails {
 
 	}
 
-	public ProductDetails(long id, int productsInStock, ShippingMethod shippingMethod, ZonedDateTime createdAt) {
+	public ProductDetails(long id, Integer productsInStock, ShippingMethod shippingMethod, ZonedDateTime createdAt) {
 		this.id = id;
 		this.productsInStock = productsInStock;
 		this.shippingMethod = shippingMethod;
@@ -47,11 +47,11 @@ public class ProductDetails {
 		this.id = id;
 	}
 
-	public int getProductsInStock() {
+	public Integer getProductsInStock() {
 		return productsInStock;
 	}
 
-	public void setProductsInStock(int productsInStock) {
+	public void setProductsInStock(Integer productsInStock) {
 		this.productsInStock = productsInStock;
 	}
 

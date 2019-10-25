@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.thymeleaf.extras.springsecurity5.dialect.SpringSecurityDialect;
 
 import com.ms.ecommerce.eshop.security.service.UserDetailsServiceImpl;
 
@@ -20,10 +21,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public UserDetailsService userDetailsService() {
         return new UserDetailsServiceImpl();
     }
+	
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+    
+    @Bean
+    public SpringSecurityDialect springSecurityDialect(){
+        return new SpringSecurityDialect();
+    }
+    
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
@@ -38,7 +46,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .authorizeRequests().antMatchers("/newProduct").hasAnyRole("USER", "ADMIN")
+                .authorizeRequests().antMatchers("/newProduct", "/**/edit").hasAnyRole("USER", "ADMIN")
+                .and()
+                .authorizeRequests().antMatchers("/api/**").hasAnyRole("USER", "ADMIN")
                 .and()
                 .authorizeRequests().antMatchers("/login", "/").permitAll()
                 .and()

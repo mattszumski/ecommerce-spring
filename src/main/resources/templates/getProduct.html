@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
 <meta charset="UTF-8">
 <title th:text="'Product page: ' + ${product.name}">Product page</title>
-<link rel="stylesheet" href="css/style.css"/>
+<link rel="stylesheet" href="/css/style.css"/>
 </head>
 <body>
 <div th:insert="fragments/header :: header"></div>
@@ -20,6 +20,9 @@
 			<p th:text="${product.category}">Product Description</p>
 	</div>
 </div>
+	<div sec:authorize="hasAnyRole('ADMIN', 'USER')">
+		<h3><a th:href="@{__${#httpServletRequest.requestURI}__/edit}">Edit</a></h3>
+	</div>
 
 <div th:insert="fragments/footer :: footer"></div>
 </body>

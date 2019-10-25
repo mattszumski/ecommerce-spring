@@ -13,11 +13,11 @@ public class ProductDTO {
 	private String longDescription;
 	private ProductCategory category;
 	private String keywords;
-	private int productsInStock;
+	private Integer productsInStock;
 	private ShippingMethod shippingMethod;
 	
 	public ProductDTO(Long product_id, String name, BigDecimal price, String shortDescription, String longDescription,
-			ProductCategory category, String keywords, int productsInStock, ShippingMethod shippingMethod) {
+			ProductCategory category, String keywords, Integer productsInStock, ShippingMethod shippingMethod) {
 		this.productId = product_id;
 		this.name = name;
 		this.price = price;
@@ -88,11 +88,11 @@ public class ProductDTO {
 		this.keywords = keywords;
 	}
 
-	public int getProductsInStock() {
+	public Integer getProductsInStock() {
 		return productsInStock;
 	}
 
-	public void setProductsInStock(int productsInStock) {
+	public void setProductsInStock(Integer productsInStock) {
 		this.productsInStock = productsInStock;
 	}
 

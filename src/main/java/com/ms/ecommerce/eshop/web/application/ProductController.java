@@ -30,11 +30,12 @@ public class ProductController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping(value="/", method=RequestMethod.GET)
-	public String getAll(Model model) {
-		model.addAttribute("data", productService.getAllProducts());
-		return "getList";
+	@RequestMapping(value="/updateProduct", method=RequestMethod.POST)
+	public String updateExistingProduct(@ModelAttribute("productDTO") ProductDTO dto) {
+		productService.updateProduct(dto);
+		return "redirect:/";
 	}
+	
 	
 	@RequestMapping(value="/search", method=RequestMethod.GET)
 	public String searchWithKeyword(@RequestParam(name="keyword", required=false) String searchedKeyword,
@@ -57,4 +58,11 @@ public class ProductController {
 		return "getProduct"; 
 	}
 	
+	@RequestMapping(value="/{productName}-{productId}/edit")
+	public String getProductEdit(@PathVariable("productName") String productName, @PathVariable("productId") Integer productId, Model model) {
+		ProductDTO productWithID = productService.getProductDTOWithIdAndName(productId, productName);
+		model.addAttribute("product", productWithID);
+		return "updateProduct"; 
+	
+	}
 }

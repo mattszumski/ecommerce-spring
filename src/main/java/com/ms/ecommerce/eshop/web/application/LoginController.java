@@ -1,9 +1,12 @@
 package com.ms.ecommerce.eshop.web.application;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.WebAttributes;
+import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -40,11 +43,10 @@ public class LoginController {
 	public String postLogin(HttpSession  session, Model model) {
 		UsernamePasswordAuthenticationToken authentication = (UsernamePasswordAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
         validatePrinciple(authentication.getPrincipal());
-		
 		 User loggedInUser = ((EShopUserDetails) authentication.getPrincipal()).getUser();
 	        model.addAttribute("currentUser", loggedInUser.getUsername());
 	        session.setAttribute("userId",  loggedInUser.getId());
-	        return "redirect:/";
+        	return "redirect:/";	        
 	}
 	
 

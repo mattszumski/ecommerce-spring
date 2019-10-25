@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert Data for new Product</title>
+<link rel="stylesheet" href="/css/style.css"/>
+</head>
+<body>
+<nav th:insert="fragments/header :: header">
+</nav>
+<div class="container">
+	<h3>Insert Data </h3>
+
+	<form th:action="@{/updateProduct}" th:object="${productDTO}" method="post">
+	<input type = "hidden" name = "productId" th:value ="${product.productId}" />
+   <p>Name: <input type="text" id="name" name="name" th:value="${product.name}"/></p>
+   <p>Price: <input type="number" id="price" name="price" step="0.01" th:value="${product.price}" /> </p>
+   <p>Short Description :<input type="text" id="shortDescription" name="shortDescription" th:value="${product.shortDescription}"/></p>
+   <p>Long Description :<input type="text" id="longDescription" name="longDescription" th:value="${product.longDescription}" /></p>
+   
+	<p> Category: <select name="category">
+    	<option th:each="category : ${T(com.ms.ecommerce.eshop.data.entity.ProductCategory).values()}"
+        	th:id="${{category}}" th:value="${{category}}" th:text="${category.label}" th:selected="${category == product.category}"></option>
+		</select> 
+	</p>
+
+	<p>KeyWords: <input type="text" id="keywords" name="keywords" th:value="${product.keywords}"/> </p>
+	<p>In Stock: <input type="text" id="productsInStock" name="productsInStock" th:value="${product.productsInStock}" /> </p>
+	<p>Shipping: <select name="shippingMethod">
+    	<option th:each="shippingMethod : ${T(com.ms.ecommerce.eshop.data.entity.ShippingMethod).values()}"
+        	th:id="${{shippingMethod}}" th:value="${{shippingMethod}}" th:text="${shippingMethod.label}" th:selected="${shippingMethod == product.shippingMethod}"></option>
+		</select> 
+	</p>
+   <button type="submit">Update Product</button>
+</form>
+	
+</div>
+
+<div th:insert="fragments/footer :: footer"></div>
+</body>
+</html>
