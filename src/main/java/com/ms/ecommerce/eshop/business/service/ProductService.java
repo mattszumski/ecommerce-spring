@@ -54,6 +54,9 @@ public class ProductService {
 		if(!product.getCategory().equals(productDTO.getCategory())) {
 			product.setCategory(productDTO.getCategory());
 		}
+		if(!product.getKeywords().equals(productDTO.getKeywords())) {
+			product.setKeywords(productDTO.getKeywords());
+		}
 		if(!product.getProductDetails().getProductsInStock().equals(productDTO.getProductsInStock())) {
 			product.getProductDetails().setProductsInStock(productDTO.getProductsInStock());
 		}
