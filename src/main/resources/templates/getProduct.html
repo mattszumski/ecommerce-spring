@@ -23,6 +23,16 @@
 	<div sec:authorize="hasAnyRole('ADMIN', 'USER')">
 		<h3><a th:href="@{__${#httpServletRequest.requestURI}__/edit}">Edit</a></h3>
 	</div>
+	<div>
+		<form th:action="@{/addToCart}" th:object="${cartDTO}" method="post">
+			<input type = "hidden" name = "productId" th:value ="${product.productId}" />
+			<input type="hidden" id="name" name="name" th:value ="${product.name}"/>
+   			<input type="hidden" id="price" name="price" th:value ="${product.price}" />
+   			<input type="hidden" id="shippingMethod" name="shippingMethod" th:value ="${product.shippingMethod}" />
+   			<p>Amount: <input type="number" id="amount" name="amount" step="1" /> </p>  
+			<button type="submit">Add to Cart</button>
+		</form>
+	</div>
 
 <div th:insert="fragments/footer :: footer"></div>
 </body>
