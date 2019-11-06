@@ -29,6 +29,27 @@ public class CartItemDTO {
 		this.shippingMethod = product.getShippingMethod();
 		return this;
 	}
+	
+	
+
+	@Override
+	public boolean equals(Object obj) {
+		CartItemDTO comparingObj = (CartItemDTO) obj;
+		if(this.productId != comparingObj.productId) {
+			return false;
+		}
+		if(!this.name.equals(comparingObj.name)) {
+			return false;
+		}
+		if(this.shippingMethod != comparingObj.shippingMethod) {
+			return false;
+		}
+		if(!this.price.equals(comparingObj.price)) {
+			return false;
+		}
+		// Amount is not compared on purpose as it doesn't matter - items in cart should stack
+		return true;
+	}
 
 	public Long getProductId() {
 		return productId;

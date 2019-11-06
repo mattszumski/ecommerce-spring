@@ -8,9 +8,6 @@
 <body>
 <div th:insert="fragments/header :: header"></div>
 
-<!-- TODO: Make it prettier, add links (to categories for example)  -->
-
-
 <div class="container">
 	<div class="d-inline-block bg-primary text-white">
 			<p th:text="${product.name}">Product Name</p>
@@ -23,15 +20,19 @@
 	<div sec:authorize="hasAnyRole('ADMIN', 'USER')">
 		<h3><a th:href="@{__${#httpServletRequest.requestURI}__/edit}">Edit</a></h3>
 	</div>
-	<div>
+	<div th:if="${product.productsInStock != 0}">
 		<form th:action="@{/addToCart}" th:object="${cartDTO}" method="post">
 			<input type = "hidden" name = "productId" th:value ="${product.productId}" />
 			<input type="hidden" id="name" name="name" th:value ="${product.name}"/>
    			<input type="hidden" id="price" name="price" th:value ="${product.price}" />
    			<input type="hidden" id="shippingMethod" name="shippingMethod" th:value ="${product.shippingMethod}" />
-   			<p>Amount: <input type="number" id="amount" name="amount" step="1" /> </p>  
+   			<!-- TODO: checking vs max items available, disabling if stock is 0 -->
+   			<p>Amount: <input type="number" id="amount" name="amount" step="1" min="1" required="required" pattern="[0-9]{1,20}"/> </p>  
 			<button type="submit">Add to Cart</button>
 		</form>
+	</div>
+	<div th:if="${product.productsInStock == 0}">
+	<h2> Sorry, this item is currently unavailable.</h2>
 	</div>
 
 <div th:insert="fragments/footer :: footer"></div>

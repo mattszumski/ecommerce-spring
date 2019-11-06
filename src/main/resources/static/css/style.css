@@ -25,4 +25,10 @@
 
 .footer {
 	border-top: 2px solid black;
+	margin-top: 25px;
+}
+
+.basic-table, th, td {
+	border: 1px solid black;
+	text-align: center;
 }

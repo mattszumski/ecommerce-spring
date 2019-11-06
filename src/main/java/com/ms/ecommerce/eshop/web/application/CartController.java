@@ -3,6 +3,7 @@ package com.ms.ecommerce.eshop.web.application;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,6 +19,14 @@ public class CartController {
 		CartService cartService = (CartService) session.getAttribute("cart");
 		cartService.addItem(dto);
 		return "redirect:/";
+	}
+	
+	@RequestMapping(value="/showCart")
+	public String showCart(HttpSession session, Model model) {
+		CartService cartService = (CartService) session.getAttribute("cart");
+		model.addAttribute("cartItems", cartService.getCartData());
+		model.addAttribute("cartTotal", cartService.getCartTotal());
+		return "showCart";
 	}
 
 }

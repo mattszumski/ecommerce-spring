@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>List of All Products</title>
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div th:insert="fragments/header :: header"></div>
+
+<div class="container">
+		<h1>Items in cart:</h1>
+</div>
+<div class="container">
+	
+	<div>
+		<table class="basic-table">
+			<tr>
+				<th>Name</th>
+				<th>Price</th>
+				<th>Amount</th>
+				<th>Shipping Method</th>
+				<th>Remove</th>
+			</tr>
+			<tr th:each="item : ${cartItems}">
+				<td th:text="${item.name}"> Item Name</td>
+				<td th:text="${item.price}">Item Price</td>
+				<td th:text="${item.amount}">Item Amount</td>
+				<td th:text="${item.shippingMethod}">Item Shipping Method</td>
+				<td></td>
+			</tr>
+		</table>
+		<p>Your cart total: <span th:text="${cartTotal}">TotalAmount</span></p>
+	</div>
+
+</div>
+
+<div th:insert="fragments/footer :: footer"></div>
+</body>
+</html>
